@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Vue</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+<body>
+    <div id="helloVue">
+        <input placeholder="write your name" v-model="username">
+        <p>  {{text1}}  </p>
+        <input placeholder="write your email" v-model="email">
+        <p>  {{text2}}  </p>
+        <input placeholder="password" v-model="password">
+        <p>  {{text3}}  </p>
+        <button v-on:click="changeName">sign up</button>
+        <p>  {{login}}  </p>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#helloVue' ,
+            data:{
+                username: '',
+                email: '',
+                password: '',
+                text1: '',
+                text2: '',
+                text3: '',
+                login: ''
+            } ,
+            methods:{
+                changeName(){
+                    this.text1 = '';
+                    this.text2 = '';
+                    this.text3 = '';
+                    this.login = '';
+                    if(this.username == '')
+                        this.text1 = "please write your name"
+                    if(this.email == '')
+                        this.text2 = "please write your email"
+                    if(this.password.length < 8)
+                        this.text3 = "password needs to have at least 8 characters"
+                    if(this.username != '' && this.email != '' && this.password.length >= 8)
+                        this.login = "profile successfully created!"
+                }
+            }
+        })
+    </script>
+</body>
+</html>

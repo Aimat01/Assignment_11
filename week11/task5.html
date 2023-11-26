@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Vue</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <link rel="stylesheet" href="style5.css">
+</head>
+<body>
+    <div id="helloVue">
+        <ul>
+            <li v-for="(item,index) in items"> 
+                <p  v-bind:class="item.line">{{item.title}}</p>
+                <input type="checkbox" v-on:click="show(index)">
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#helloVue' , 
+            data: {
+                items: [
+                    {title: 'Go to BAL' , isCompleted: false , line: 'clear'} , 
+                    {title: 'Complete 11 assignment' , isCompleted: false, line: 'clear'} , 
+                    {title: 'go to uni' , isCompleted : false , line: 'clear'}
+                ]
+            } , 
+            methods: {
+                show(index){
+                    this.items[index].isCompleted = !this.items[index].isCompleted ; 
+                    if (this.items[index].isCompleted)
+                        this.items[index].line = 'line' 
+                    else
+                        this.items[index].line = 'clear' 
+
+                    console.log(this.items[index].line)
+        
+                }
+            }
+        });
+    </script>
+</body>
+</html>

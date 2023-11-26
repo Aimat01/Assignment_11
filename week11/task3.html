@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Vue</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+<body>
+    <div id="helloVue">
+        <input placeholder="write your name" v-model="username">
+        <button v-on:click="changeName">clear</button>
+        <h1>  {{username}}  </h1>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#helloVue' , 
+            data: {
+                username: ""
+            },
+            methods:{
+                changeName(){
+                    this.username = ""
+                }
+            }
+        })
+    </script>
+</body>
+</html>
